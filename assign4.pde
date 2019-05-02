@@ -423,8 +423,12 @@ void draw() {
       float soldierB = soldierY[i] + SOIL_SIZE;
       
       if(playerX < soldierR && playerR > soldierX[i] && playerY < soldierB && playerB > soldierY[i] ){
-        playerX = PLAYER_INIT_X ;
-        playerY = PLAYER_INIT_Y ;
+        playerX = PLAYER_INIT_X;
+        playerY = PLAYER_INIT_Y;
+        playerCol = (int) (playerX / SOIL_SIZE);
+        playerRow = (int) (playerY / SOIL_SIZE);
+        playerMoveTimer = 0;
+        playerHealth -= 1;
       }
       
     }
