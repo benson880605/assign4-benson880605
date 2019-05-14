@@ -271,7 +271,12 @@ void draw() {
 
 		// If player is not moving, we have to decide what player has to do next
 		if(playerMoveTimer == 0){
-
+      if((playerRow + 1 < SOIL_ROW_COUNT && soilHealth[playerCol][playerRow + 1] == 0) || playerRow + 1 >= SOIL_ROW_COUNT){
+  
+          groundhogDisplay = groundhogDown;
+          playerMoveDirection = DOWN;
+          playerMoveTimer = playerMoveDuration;
+      }
 			// HINT:
 			// You can use playerCol and playerRow to get which soil player is currently on
 
@@ -404,7 +409,7 @@ void draw() {
         playerRow = (int) (playerY / SOIL_SIZE);
         playerMoveTimer = 0;
         playerHealth -= 1;
-	downState = false;
+        downState = false;
       }
       
     }
