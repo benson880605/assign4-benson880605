@@ -433,7 +433,7 @@ void draw() {
       float y = 10;
       image(life , x , y);
     }
-
+    if( playerHealth <= 0 )gameState = 2 ;
 		break;
 
 		case GAME_OVER: // Gameover Screen
