@@ -404,6 +404,7 @@ void draw() {
         playerRow = (int) (playerY / SOIL_SIZE);
         playerMoveTimer = 0;
         playerHealth -= 1;
+	downState = false;
       }
       
     }
