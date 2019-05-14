@@ -433,7 +433,7 @@ void draw() {
       float y = 10;
       image(life , x , y);
     }
-    if( playerHealth <= 0 )gameState = 2 ;
+    if( playerHealth <= 0 ){gameState = 2 ;}
 		break;
 
 		case GAME_OVER: // Gameover Screen
@@ -459,17 +459,78 @@ void draw() {
 
 				// Initialize soilHealth
 				soilHealth = new int[SOIL_COL_COUNT][SOIL_ROW_COUNT];
-				for(int i = 0; i < soilHealth.length; i++){
-					for (int j = 0; j < soilHealth[i].length; j++) {
-						 // 0: no soil, 15: soil only, 30: 1 stone, 45: 2 stones
-						soilHealth[i][j] = 15;
-					}
-				}
+        for(int i = 0; i < soilHealth.length; i++){
+          for (int j = 0; j < soilHealth[i].length; j++) {
+             // 0: no soil, 15: soil only, 30: 1 stone, 45: 2 stones
+            soilHealth[i][j] = 15;
+            soilHealth[i][i] = 30 ;
+          }
+        }
+      
+        //stone2
+        
+        for(int i=0;i<2;i++){soilHealth[1+i][8] = 30;}
+        for(int i=0;i<2;i++){soilHealth[1+i][11] = 30;}
+        for(int i=0;i<2;i++){soilHealth[1+i][12] = 30;}
+        for(int i=0;i<2;i++){soilHealth[1+i][15] = 30;}
+        for(int i=0;i<2;i++){soilHealth[5+i][8] = 30;}
+        for(int i=0;i<2;i++){soilHealth[5+i][11] = 30;}
+        for(int i=0;i<2;i++){soilHealth[5+i][12] = 30;}
+        for(int i=0;i<2;i++){soilHealth[5+i][15] = 30;}
+        for(int i=0;i<8;i=i+7){soilHealth[0+i][9] = 30;}
+        for(int i=0;i<2;i++){soilHealth[3+i][9] = 30;}
+        for(int i=0;i<8;i=i+7){soilHealth[0+i][10] = 30;}
+        for(int i=0;i<2;i++){soilHealth[3+i][10] = 30;}
+        for(int i=0;i<8;i=i+7){soilHealth[0+i][13] = 30;}
+        for(int i=0;i<2;i++){soilHealth[3+i][13] = 30;}
+        for(int i=0;i<8;i=i+7){soilHealth[0+i][14] = 30;}
+        for(int i=0;i<2;i++){soilHealth[3+i][14] = 30;}
+        
+        //stone3
+        
+        for(int i=0;i<8;i=i+3){soilHealth[1+i][16] = 30;}
+        for(int i=0;i<6;i=i+3){soilHealth[2+i][16] = 45;}
+        for(int i=0;i<8;i=i+3){soilHealth[0+i][17] = 30;}
+        for(int i=0;i<8;i=i+3){soilHealth[1+i][17] = 45;}
+        for(int i=0;i<6;i=i+3){soilHealth[2+i][18] = 30;}
+        for(int i=0;i<8;i=i+3){soilHealth[0+i][18] = 45;}
+        for(int i=0;i<8;i=i+3){soilHealth[1+i][19] = 30;}
+        for(int i=0;i<6;i=i+3){soilHealth[2+i][19] = 45;}
+        for(int i=0;i<8;i=i+3){soilHealth[0+i][20] = 30;}
+        for(int i=0;i<8;i=i+3){soilHealth[1+i][20] = 45;}
+        for(int i=0;i<6;i=i+3){soilHealth[2+i][21] = 30;}
+        for(int i=0;i<8;i=i+3){soilHealth[0+i][21] = 45;}
+        for(int i=0;i<8;i=i+3){soilHealth[1+i][22] = 30;}
+        for(int i=0;i<6;i=i+3){soilHealth[2+i][22] = 45;}
+        for(int i=0;i<8;i=i+3){soilHealth[0+i][23] = 30;}
+        for(int i=0;i<8;i=i+3){soilHealth[1+i][23] = 45;}
+        
+        for(int i=1 ; i<24 ; i++){
+        int count = floor(random(2))+1;
+        for(int j=0 ; j<count ; j++){
+          int col= floor(random(8));
+          soilHealth[col][i] = 0;
+         }
+       }
 
 				// Initialize soidiers and their position
-
+        soldierX = new float[6];
+        soldierY = new float[6];
+        for(int i = 0 ; i < soldierX.length ; i++){
+          for(int j = 0 ; j < soldierY.length ; j++){
+          soldierX[i] = SOIL_SIZE * floor(random(8));
+          soldierY[j] = ( j * SOIL_SIZE * 4 ) + SOIL_SIZE * floor(random(4));
+          }
+        }
 				// Initialize cabbages and their position
-				
+				cabbageX = new float[6];
+        cabbageY = new float[6];
+        for(int i = 0 ; i < cabbageX.length ; i ++){
+          for(int j= 0 ; j< cabbageY.length ; j++ ){
+            cabbageX[i] = SOIL_SIZE * floor(random(8));
+            cabbageY[j] = ( j * SOIL_SIZE * 4 ) + SOIL_SIZE * floor(random(4));
+          }
+        }
 			}
 
 		}else{
